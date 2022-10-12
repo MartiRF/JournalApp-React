@@ -1,8 +1,10 @@
 import { TurnedInNot } from '@mui/icons-material'
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 export const SideBar = ({ drawerWidth }) => {
+    const { displayName } = useSelector(state => state.auth)
   return (
     <Box component='nav'
         sx={{width: {sm: drawerWidth}, flexShrink:{ sm:0 }}}>
@@ -10,7 +12,7 @@ export const SideBar = ({ drawerWidth }) => {
         <Drawer variant='permanent' open={true}
             sx={{ display:{xs:'block'}, '& .MuiDrawer-paper': {boxSizing:'border-box', width: drawerWidth}}}>
             <Toolbar>
-                <Typography variant='h6' noWrap component='div'>Martin Reyes</Typography>
+                <Typography variant='h6' noWrap component='div'>{displayName}</Typography>
             </Toolbar>
             <Divider />
 
@@ -22,7 +24,7 @@ export const SideBar = ({ drawerWidth }) => {
                             <ListItemIcon>
                                 <TurnedInNot />
                             </ListItemIcon>
-                            <Grid conatiner>
+                            <Grid container>
                                 <ListItemText primary={ text } />
                                 <ListItemText secondary={ 'Mama mia '} />
                             </Grid>
