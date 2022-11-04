@@ -7,6 +7,11 @@ import { AuhtLayout } from '../layout/AuhtLayout'
 import { useForm } from '../../hooks/useForm'
 import { checkingAuthentication, startGoogleSingIn, startLoginWithEmailPassword } from '../../store/auth/thunks'
 
+const FormData = {
+  email:'',
+  password:''
+}
+
 export const LoginPage = () => {
   
   
@@ -14,10 +19,7 @@ export const LoginPage = () => {
 
   const dispatch = useDispatch()
 
-  const { email, password, onInputChange } = useForm({
-    email:'',
-    password:''
-  })
+  const { email, password, onInputChange } = useForm( FormData )
   
   const isAuthenticating = useMemo(()=> status === 'checking', [status])
 
